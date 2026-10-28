@@ -1,0 +1,112 @@
+<div class="home-page-container">
+  <!-- Tarjeta de Bienvenida y Estadísticas -->
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <mat-icon>school</mat-icon>
+        <span>UNSA • Facultad de Ingeniería de Producción y Servicios</span>
+      </div>
+      <h1 class="hero-title">Catálogo de Biblioteca Universitaria</h1>
+      <p class="hero-subtitle">
+        Consulta la disponibilidad bibliográfica por categorías especializadas en computación y ciencias.
+      </p>
+    </div>
+
+    <div class="stats-cards">
+      <div class="stat-card">
+        <div class="stat-number">{{ librosFiltrados.length }}</div>
+        <div class="stat-label">Libros Listados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ totalDisponibles }}</div>
+        <div class="stat-label">Ejemplares Disponibles</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Áreas de Especialidad</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filtro Requerido: <mat-card> con <mat-form-field> y <mat-select> -->
+  <mat-card class="filter-card mat-elevation-z2">
+    <mat-card-header>
+      <div class="filter-header-content">
+        <div class="filter-title-wrapper">
+          <mat-icon class="filter-icon">filter_alt</mat-icon>
+          <div>
+            <h2 class="filter-title">Filtro de Catálogo</h2>
+            <p class="filter-description">Seleccione una categoría para explorar los libros disponibles.</p>
+          </div>
+        </div>
+
+        @if (categoriaSeleccionada !== 'Todas' || terminoBusqueda) {
+          <button mat-button color="warn" (click)="limpiarFiltros()" class="btn-clear">
+            <mat-icon>refresh</mat-icon> Limpiar Filtros
+          </button>
+        }
+      </div>
+    </mat-card-header>
+
+    <mat-card-content class="filter-controls">
+      <!-- Selector de Categoría (Requerimiento de Práctica 9) -->
+      <mat-form-field appearance="outline" class="category-select-field">
+        <mat-label>Filtrar por Categoría</mat-label>
+        <mat-select
+          id="select-categoria"
+          [(value)]="categoriaSeleccionada"
+          (selectionChange)="onCategoriaChange($event.value)"
+        >
+          @for (cat of categorias; track cat) {
+            <mat-option [value]="cat">
+              {{ cat }}
+            </mat-option>
+          }
+        </mat-select>
+        <mat-icon matPrefix class="field-icon">category</mat-icon>
+        <mat-hint>Programación, Bases de Datos, Redes o Ciencias Básicas</mat-hint>
+      </mat-form-field>
+
+      <!-- Búsqueda textual adicional para facilidad de uso -->
+      <mat-form-field appearance="outline" class="search-input-field">
+        <mat-label>Buscar por Título, Autor o Código</mat-label>
+        <input
+          matInput
+          id="input-busqueda"
+          type="text"
+          placeholder="Ej: Clean Code, Tanenbaum, LIB-017..."
+          [(ngModel)]="terminoBusqueda"
+          (input)="aplicarFiltros()"
+        />
+        <mat-icon matPrefix class="field-icon">search</mat-icon>
+        @if (terminoBusqueda) {
+          <button mat-icon-button matSuffix (click)="terminoBusqueda = ''; aplicarFiltros()" aria-label="Limpiar búsqueda">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+    </mat-card-content>
+
+    <div class="active-filter-indicator">
+      <span class="indicator-label">Mostrando:</span>
+      <span class="active-tag">
+        <strong>Categoría:</strong> {{ categoriaSeleccionada }}
+      </span>
+      <span class="results-count">({{ librosFiltrados.length }} libros encontrados)</span>
+    </div>
+  </mat-card>
+
+  <!-- Componente Presentacional (Dumb Component): TablaLibrosComponent pasando la lista filtrada -->
+  <section class="catalog-section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <mat-icon class="section-icon">table_view</mat-icon>
+        Listado de Ejemplares
+      </h2>
+      <span class="badge-total">{{ librosFiltrados.length }} de 30 libros</span>
+    </div>
+
+    <!-- Pasa la lista filtrada al Dumb Component mediante @Input -->
+    <app-tabla-libros [libros]="librosFiltrados"></app-tabla-libros>
+  </section>
+</div>

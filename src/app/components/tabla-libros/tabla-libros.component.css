@@ -1,0 +1,215 @@
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.custom-libros-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-header-row {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  height: 54px;
+}
+
+.header-cell {
+  color: #f8fafc !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 12px 18px !important;
+  border: none;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.table-data-row {
+  transition: all 0.2s ease;
+  height: 58px;
+}
+
+.table-data-row:hover {
+  background-color: #f1f5f9 !important;
+  transform: translateY(-1px);
+}
+
+.cell-id,
+.cell-titulo,
+.cell-categoria,
+.cell-autor,
+.cell-disponibles,
+.cell-acciones {
+  padding: 12px 18px !important;
+  font-size: 0.92rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Badge del Código */
+.code-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-weight: 700;
+  font-size: 0.82rem;
+  background: #e2e8f0;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  letter-spacing: 0.05em;
+}
+
+/* Título */
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.book-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #0284c7;
+}
+
+.book-title {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Categorías */
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.cat-prog {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.cat-db {
+  background-color: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.cat-net {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.cat-sci {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
+}
+
+.cat-default {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Autor */
+.author-name {
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Stock */
+.stock-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.stock-high {
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.stock-medium {
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fef3c7;
+}
+
+.stock-low {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* Botón de acción */
+.action-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+.action-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35) !important;
+}
+
+.btn-icon {
+  font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: #64748b;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 54px;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 12px;
+  color: #94a3b8;
+}
+
+.empty-state h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+  color: #334155;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.95rem;
+}
